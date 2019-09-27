@@ -59,7 +59,11 @@ class Proxy
      */
     private function getBody($method, string $url,array $data)
     {
-        $output = $this->http->$method($url, $data);
-        return isset($output['body']) ? $output['body'] : null;
+        try {
+            $output = $this->http->$method($url, $data);
+            return isset($output['body']) ? $output['body'] : null;
+        } catch (\Exception $exception) {
+            throw $exception;
+        }
     }
 }
