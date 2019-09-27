@@ -61,8 +61,8 @@ class Proxy
     private function getContent($method, string $url,array $data)
     {
         try {
-            $output = $this->http->$method($url, $data);
-            return isset($output['body']) ? $output['body'] : null;
+            $response = $this->http->$method($url, $data);
+            return isset($response['body']) ? $response['body'] : null;
         } catch (\Exception $exception) {
             throw $exception;
         }
