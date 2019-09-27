@@ -52,9 +52,9 @@ class Proxy
     /**
      * Notes: 获取内容
      * User: mhl
-     * @param $method
-     * @param string $url
-     * @param array $data
+     * @param $method 请求方法
+     * @param string $url 请求地址
+     * @param array $data 请求数据
      * @return null
      */
     private function getBody($method, string $url,array $data)
