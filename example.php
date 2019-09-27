@@ -13,12 +13,23 @@ $appSecret = $envs['APP_SECRET'];
 try {
     $client = new \YunXinIm\YunXinImClient($appKey, $appSecret);
     $imTeam = new \YunXinIm\IM\Team($client);
-    $tids = ['26878494751'];
-    // 获取某个群的信息和群人员。
-    $imTeamInfo = $imTeam->getTeamsInfoAddMembers($tids);
-    dd($imTeamInfo);
+    $tids = ['2687849475'];
+//    // 获取某个群的信息和群人员。
+//    $imTeamInfo = $imTeam->getTeamsInfoAddMembers($tids);
+//    dd($imTeamInfo);
+    $imUser = new \YunXinIm\IM\User($client);
+    $user = $imUser->create(1,1);
+    /*
+     * 报错
+     * int(414)
+        string(16) "already register"
+     *
+     * */
+    dd($user);
+
 } catch (\Exception $exception) {
     // todo some things
+    var_dump($exception->getCode());
     dd($exception->getMessage());
 }
 
