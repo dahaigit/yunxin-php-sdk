@@ -31,22 +31,22 @@ class Proxy
 
     public function get($url,array $data)
     {
-        return $this->getBody(__FUNCTION__, $url, $data);
+        return $this->getContent(__FUNCTION__, $url, $data);
     }
 
     public function post($url,array $data)
     {
-        return $this->getBody(__FUNCTION__, $url, $data);
+        return $this->getContent(__FUNCTION__, $url, $data);
     }
 
     public function put($url,array $data)
     {
-        return $this->getBody(__FUNCTION__, $url, $data);
+        return $this->getContent(__FUNCTION__, $url, $data);
     }
 
     public function delete($url,array $data)
     {
-        return $this->getBody(__FUNCTION__, $url, $data);
+        return $this->getContent(__FUNCTION__, $url, $data);
     }
 
     /**
@@ -58,7 +58,7 @@ class Proxy
      * @return array|null
      * @throws \Exception
      */
-    private function getBody($method, string $url,array $data)
+    private function getContent($method, string $url,array $data)
     {
         try {
             $output = $this->http->$method($url, $data);
