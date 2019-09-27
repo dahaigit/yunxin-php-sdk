@@ -14,7 +14,7 @@ class Proxy
         'GET' => 'get',
         'POST' => 'post',
         'PUT' => 'put',
-        'DEL' => 'del',
+        'DELETE' => 'delete',
     ];
 
     /**
@@ -29,36 +29,37 @@ class Proxy
         $this->http = Http::getInstance($httpOptions);
     }
 
-    /**
-     * Notes: 代理请求的模式方法。
-     * User: mhl
-     * @param $name
-     * @param $arguments
-     * @throws \Exception
-     */
-    public function __call($name, $arguments) {
-        try {
-            if (in_array($name, self::REQUEST_METHODS)) {
-                if (count($arguments) != 2) {
-                    throw new \Exception('参数数量错误！');
-                }
-                $this->getBody($this->http->$name($arguments[0], $arguments[1]));
-            } else {
-                throw new \Exception('方法不存在！');
-            }
-        } catch (\Exception $exception) {
-            throw $exception;
-        }
+    public function get($url,array $data)
+    {
+        return $this->getBody(__FUNCTION__, $url, $data);
+    }
+
+    public function post($url,array $data)
+    {
+        return $this->getBody(__FUNCTION__, $url, $data);
+    }
+
+    public function put($url,array $data)
+    {
+        return $this->getBody(__FUNCTION__, $url, $data);
+    }
+
+    public function delete($url,array $data)
+    {
+        return $this->getBody(__FUNCTION__, $url, $data);
     }
 
     /**
-     * Notes: 获取返回结果的body内容
+     * Notes: 获取内容
      * User: mhl
-     * @param $output
+     * @param $method
+     * @param string $url
+     * @param array $data
      * @return null
      */
-    private function getBody($output)
+    private function getBody($method, string $url,array $data)
     {
+        $output = $this->http->$method($url, $data);
         return isset($output['body']) ? $output['body'] : null;
     }
 }

@@ -16,17 +16,14 @@ class User extends Proxy
     public function create($accid, $name)
     {
         $url = $this->baseUrl . 'nimserver/user/create.action';
-        try {
-            $body = [
-                'accid' => $accid,
-                'name' => $name,
-                // 用户登陆token
-                'token' => md5($accid),
-            ];
-            return $this->post($url, $body);
-        } catch (\Exception $exception) {
-            throw $exception;
-        }
+
+        $body = [
+            'accid' => $accid,
+            'name' => $name,
+            // 用户登陆token
+            'token' => md5($accid),
+        ];
+        return $this->post($url, $body);
     }
 }
 

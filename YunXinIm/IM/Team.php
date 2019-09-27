@@ -17,19 +17,15 @@ class Team extends Proxy
     public function create($groupName, $groupOwner,array $groupMembers)
     {
         $url = $this->baseUrl . 'nimserver/team/create.action';
-        try {
-            $body = [
-                'tname' => $groupName,
-                'owner' => $groupOwner,
-                'members' => json_encode(array_keys($groupMembers)),
-                'msg' => 'invite member',
-                'magree' => 0,
-                'joinmode' => 0
-            ];
-            return $this->post($url, $body);
-        } catch (\Exception $exception) {
-            throw $exception;
-        }
+        $body = [
+            'tname' => $groupName,
+            'owner' => $groupOwner,
+            'members' => json_encode(array_keys($groupMembers)),
+            'msg' => 'invite member',
+            'magree' => 0,
+            'joinmode' => 0
+        ];
+        return $this->post($url, $body);
     }
 
     /**
@@ -43,15 +39,11 @@ class Team extends Proxy
     public function remove($tid, $owner)
     {
         $url = $this->baseUrl . 'nimserver/team/remove.action';
-        try {
-            $body = [
-                'tid' => $tid,
-                'owner' => $owner,
-            ];
-            return $this->post($url, $body);
-        } catch (\Exception $exception) {
-            throw $exception;
-        }
+        $body = [
+            'tid' => $tid,
+            'owner' => $owner,
+        ];
+        return $this->post($url, $body);
     }
 
     /**
@@ -73,34 +65,30 @@ class Team extends Proxy
     {
         $addRes = null;
         $kickRes = null;
-        try {
-            if (!empty($addMembers)) {
-                $addUrl = $this->baseUrl . 'nimserver/team/add.action';
-                $addBody = [
-                    'tid' => $tid,
-                    'owner' => $owner,
-                    'members' => json_encode($addMembers),
-                    'magree' => 0,
-                    'msg' => 'Welcome to group',
-                ];
-                $addRes =  $this->post($addUrl, $addBody);
-            }
-            if (!empty($kickMembers)) {
-                $kickUrl = $this->baseUrl . 'nimserver/team/kick.action';
-                $kickBody = [
-                    'tid' => $tid,
-                    'owner' => $owner,
-                    'members' => json_encode($kickMembers),
-                ];
-                $kickRes =  $this->post($kickUrl, $kickBody);
-            }
-            return [
-                'add_res' => $addRes,
-                'kick_res' => $kickRes
+        if (!empty($addMembers)) {
+            $addUrl = $this->baseUrl . 'nimserver/team/add.action';
+            $addBody = [
+                'tid' => $tid,
+                'owner' => $owner,
+                'members' => json_encode($addMembers),
+                'magree' => 0,
+                'msg' => 'Welcome to group',
             ];
-        } catch (\Exception $exception) {
-            throw $exception;
+            $addRes =  $this->post($addUrl, $addBody);
         }
+        if (!empty($kickMembers)) {
+            $kickUrl = $this->baseUrl . 'nimserver/team/kick.action';
+            $kickBody = [
+                'tid' => $tid,
+                'owner' => $owner,
+                'members' => json_encode($kickMembers),
+            ];
+            $kickRes =  $this->post($kickUrl, $kickBody);
+        }
+        return [
+            'add_res' => $addRes,
+            'kick_res' => $kickRes
+        ];
     }
 
     /**
