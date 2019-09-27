@@ -1,9 +1,9 @@
 <?php
 namespace YunXinIm\IM;
 
-use YunXinIm\IM;
+use YunXinIm\Proxy;
 
-class User extends IM
+class User extends Proxy
 {
     /**
      * Notes: 创建用户，注册用户
