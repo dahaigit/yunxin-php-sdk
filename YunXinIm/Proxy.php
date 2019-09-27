@@ -71,7 +71,7 @@ class Proxy
             if (isset($response['body'])) {
                 return $response['body'];
             } else {
-                throw new \Exception('未获取内容');
+                throw new YunXinException('未获取内容');
             }
         } catch (\Exception $exception) {
             throw $exception;
