@@ -3,8 +3,14 @@ namespace YunXinIm;
 
 class Proxy
 {
+    /**
+     * @var Http Http对象
+     */
     private $http;
 
+    /**
+     * @var string 请求基础url
+     */
     protected $baseUrl = 'https://api.netease.im/';
 
     /**
