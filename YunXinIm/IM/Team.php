@@ -129,15 +129,11 @@ class Team extends Proxy
     public function getTeamsInfoAddMembers(array $tids, $ope = 1)
     {
         $url = $this->baseUrl . 'nimserver/team/query.action';
-        try {
-            $body = [
-                'tids' => json_encode($tids),
-                'ope' => $ope,
-            ];
-            return $this->post($url, $body);
-        } catch (\Exception $exception) {
-            throw $exception;
-        }
+        $body = [
+            'tids' => json_encode($tids),
+            'ope' => $ope,
+        ];
+        return $this->post($url, $body);
     }
 }
 

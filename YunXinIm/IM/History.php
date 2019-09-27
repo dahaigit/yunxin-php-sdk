@@ -19,18 +19,14 @@ class History extends Proxy
     public function getTeamMsg($tid, $accid, $beginTime, $endTime, $limit = 100)
     {
         $url = $this->baseUrl . 'nimserver/history/queryTeamMsg.action';
-        try {
-            $body = [
-                'tid' => $tid,
-                'accid' => $accid,
-                'begintime' => $beginTime,
-                'endtime' => $endTime,
-                'limit' => $limit,
-            ];
-            return $this->post($url, $body);
-        } catch (\Exception $exception) {
-            throw $exception;
-        }
+        $body = [
+            'tid' => $tid,
+            'accid' => $accid,
+            'begintime' => $beginTime,
+            'endtime' => $endTime,
+            'limit' => $limit,
+        ];
+        return $this->post($url, $body);
     }
 }
 

@@ -16,7 +16,6 @@ class User extends Proxy
     public function create($accid, $name)
     {
         $url = $this->baseUrl . 'nimserver/user/create.action';
-
         $body = [
             'accid' => $accid,
             'name' => $name,
