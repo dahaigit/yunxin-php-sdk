@@ -14,16 +14,6 @@ class Proxy
     protected $baseUrl = 'https://api.netease.im/';
 
     /**
-     * 请求方式
-     */
-    const REQUEST_METHODS = [
-        'GET' => 'get',
-        'POST' => 'post',
-        'PUT' => 'put',
-        'DELETE' => 'delete',
-    ];
-
-    /**
      * IM 请求代理
      * @param YunXinImClient $client
      */
