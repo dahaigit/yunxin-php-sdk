@@ -55,7 +55,8 @@ class Proxy
      * @param $method 请求方法
      * @param string $url 请求地址
      * @param array $data 请求数据
-     * @return null
+     * @return array|null
+     * @throws \Exception
      */
     private function getBody($method, string $url,array $data)
     {
