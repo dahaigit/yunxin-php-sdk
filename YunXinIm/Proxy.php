@@ -70,7 +70,7 @@ class Proxy
             $response = $this->http->$method($url, $data);
             if (isset($response['body'])) {
                 if ($response['body']['code'] != 200) {
-                    throw new YunXinImException($response['body']['desc'], $response['body']['code']);
+                    throw new YunXinImException($response['body']['code'] . "|" .$response['body']['desc']);
                 }
                 return $response['body'];
             } else {

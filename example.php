@@ -28,8 +28,6 @@ try {
     dd($user);
 
 } catch (\Exception $exception) {
-    // todo some things
-    var_dump($exception->getCode());
     dd($exception->getMessage());
 }
 
