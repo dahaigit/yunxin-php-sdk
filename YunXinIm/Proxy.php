@@ -61,7 +61,7 @@ class Proxy
      * @param $method 请求方法
      * @param string $url 请求地址
      * @param array $data 请求数据
-     * @return array|null
+     * @return array
      * @throws \Exception
      */
     private function getContent($method, string $url,array $data)
