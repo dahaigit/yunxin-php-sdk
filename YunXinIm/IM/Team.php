@@ -107,7 +107,7 @@ class Team extends Proxy
      * Notes: 获取多组信息和成员
      * User: mhl
      * @param array $tids 群id数组
-     * @param int $ope
+     * @param int $ope 当值为1时，这个接口会返回成员数组。否则无。
      * @return array [
      *  "tinfos" => array:1 [
      *      0 => array:18 [
