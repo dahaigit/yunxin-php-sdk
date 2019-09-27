@@ -60,7 +60,11 @@ class Proxy
             $response = $this->http->$method($url, $data);
             if (isset($response['body'])) {
                 if ($response['body']['code'] != 200) {
+                    // 这里我们直接抛出异常
                     throw new YunXinImException($response['body']['code'] . "|" .$response['body']['desc']);
+                    // 实际项目中，我们这样写。注意，不要把这些报错，直接显示出来。只提示im接口请求报错。并且记录日志。
+                    // self::logWarningStatic($response['body']['code'] . "|" .$response['body']['desc'] . "|" . $url);
+                    // self::throwErrorStatic(Code::E_IM_ERROR);
                 }
                 return $response['body'];
             } else {
