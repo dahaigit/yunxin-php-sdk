@@ -69,6 +69,9 @@ class Proxy
         try {
             $response = $this->http->$method($url, $data);
             if (isset($response['body'])) {
+                if ($response['body']['code'] != 200) {
+                    throw new YunXinImException($response['body']['desc'], $response['body']['code']);
+                }
                 return $response['body'];
             } else {
                 throw new YunXinImException('未获取内容');
