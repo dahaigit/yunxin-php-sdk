@@ -5,6 +5,8 @@ class IM
 {
     private $http;
 
+    protected $baseUrl = 'https://api.netease.im/';
+
     /**
      * IM 请求的基类
      * @param YunXinImClient $client

@@ -18,7 +18,7 @@ class History extends IM
      */
     public function getTeamMsg($tid, $accid, $beginTime, $endTime, $limit = 100)
     {
-        $url = 'https://api.netease.im/nimserver/history/queryTeamMsg.action';
+        $url = $this->baseUrl . 'nimserver/history/queryTeamMsg.action';
         try {
             $body = [
                 'tid' => $tid,

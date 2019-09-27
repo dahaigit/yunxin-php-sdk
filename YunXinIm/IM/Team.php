@@ -16,7 +16,7 @@ class Team extends IM
      */
     public function create($groupName, $groupOwner,array $groupMembers)
     {
-        $url = 'https://api.netease.im/nimserver/team/create.action';
+        $url = $this->baseUrl . 'nimserver/team/create.action';
         try {
             $body = [
                 'tname' => $groupName,
@@ -42,7 +42,7 @@ class Team extends IM
      */
     public function remove($tid, $owner)
     {
-        $url = 'https://api.netease.im/nimserver/team/remove.action';
+        $url = $this->baseUrl . 'nimserver/team/remove.action';
         try {
             $body = [
                 'tid' => $tid,
@@ -75,7 +75,7 @@ class Team extends IM
         $kickRes = null;
         try {
             if (!empty($addMembers)) {
-                $addUrl = 'https://api.netease.im/nimserver/team/add.action';
+                $addUrl = $this->baseUrl . 'nimserver/team/add.action';
                 $addBody = [
                     'tid' => $tid,
                     'owner' => $owner,
@@ -86,7 +86,7 @@ class Team extends IM
                 $addRes =  $this->post($addUrl, $addBody);
             }
             if (!empty($kickMembers)) {
-                $kickUrl = 'https://api.netease.im/nimserver/team/kick.action';
+                $kickUrl = $this->baseUrl . 'nimserver/team/kick.action';
                 $kickBody = [
                     'tid' => $tid,
                     'owner' => $owner,
@@ -140,7 +140,7 @@ class Team extends IM
      */
     public function getTeamsInfoAddMembers(array $tids, $ope = 1)
     {
-        $url = 'https://api.netease.im/nimserver/team/query.action';
+        $url = $this->baseUrl . 'nimserver/team/query.action';
         try {
             $body = [
                 'tids' => json_encode($tids),

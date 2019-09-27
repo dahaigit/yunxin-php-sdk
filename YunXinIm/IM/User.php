@@ -15,7 +15,7 @@ class User extends IM
      */
     public function create($accid, $name)
     {
-        $url = 'https://api.netease.im/nimserver/user/create.action';
+        $url = $this->baseUrl . 'nimserver/user/create.action';
         try {
             $body = [
                 'accid' => $accid,
