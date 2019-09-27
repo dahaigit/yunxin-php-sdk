@@ -18,7 +18,7 @@ class Proxy
     ];
 
     /**
-     * IM 请求的代理
+     * IM 请求代理
      * @param YunXinImClient $client
      */
     public function __construct(YunXinImClient $client)
@@ -62,7 +62,11 @@ class Proxy
     {
         try {
             $response = $this->http->$method($url, $data);
-            return isset($response['body']) ? $response['body'] : null;
+            if (isset($response['body'])) {
+                return $response['body'];
+            } else {
+                throw new \Exception('未获取内容');
+            }
         } catch (\Exception $exception) {
             throw $exception;
         }
