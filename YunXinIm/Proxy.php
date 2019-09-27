@@ -29,17 +29,34 @@ class Proxy
         $this->http = Http::getInstance($httpOptions);
     }
 
+    /**
+     * Notes: 代理请求的模式方法。
+     * User: mhl
+     * @param $name
+     * @param $arguments
+     * @throws \Exception
+     */
     public function __call($name, $arguments) {
-        if (in_array($name, self::REQUEST_METHODS)) {
-            if (count($arguments) != 2) {
-                throw new \Exception('参数数量错误！');
+        try {
+            if (in_array($name, self::REQUEST_METHODS)) {
+                if (count($arguments) != 2) {
+                    throw new \Exception('参数数量错误！');
+                }
+                $this->getBody($this->http->$name($arguments[0], $arguments[1]));
+            } else {
+                throw new \Exception('方法不存在！');
             }
-            $this->getBody($this->http->$name($arguments[0], $arguments[1]));
-        } else {
-            throw new \Exception('方法不存在！');
+        } catch (\Exception $exception) {
+            throw $exception;
         }
     }
 
+    /**
+     * Notes: 获取返回结果的body内容
+     * User: mhl
+     * @param $output
+     * @return null
+     */
     private function getBody($output)
     {
         return isset($output['body']) ? $output['body'] : null;
