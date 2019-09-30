@@ -1,5 +1,5 @@
 <?php
-namespace YunXinIm;
+namespace YunXinIM;
 
 class IMAuth
 {

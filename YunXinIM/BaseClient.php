@@ -1,5 +1,7 @@
 <?php
-namespace YunXinIm;
+namespace YunXinIM;
+
+use YunXinIM\IMException;
 
 class BaseClient
 {
