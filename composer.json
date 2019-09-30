@@ -2,7 +2,7 @@
     "name": "dahaigit/yunxin-php-sdk",
     "description": "This is the sdk of yunxin Instant Messaging.",
     "require": {},
-    "version": "~1.0.0",
+    "version": "1.0.0-dev",
     "autoload": {
         "psr-4": {
             "YumXinIM\\": "YumXinIM/"
