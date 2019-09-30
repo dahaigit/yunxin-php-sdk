@@ -5,9 +5,15 @@
     "require": {
         "php": ">=7.0"
     },
+    "authors": [
+        {
+            "name": "dahaigit",
+            "email": "2210411072@qq.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
-            "YumXinIM\\": "YumXinIM/"
+            "YumXinIM\\": "src/"
         }
     },
     "minimum-stability": "dev",
