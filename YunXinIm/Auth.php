@@ -1,7 +1,7 @@
 <?php
 namespace YunXinIm;
 
-class YunXinImClient
+class Auth
 {
     /**
      * @var 平台的key
@@ -45,7 +45,7 @@ class YunXinImClient
      * User: mhl
      * @return array
      */
-    public function getHttpHeaders()
+    public function getAuthHeaders()
     {
         $this->curTime = (string)(time());
         $this->nonce = md5(uniqid(microtime(true), true));

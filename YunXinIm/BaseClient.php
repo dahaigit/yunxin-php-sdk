@@ -1,7 +1,7 @@
 <?php
 namespace YunXinIm;
 
-class Proxy
+class BaseClient
 {
     /**
      * @var Http Http对象
@@ -15,12 +15,12 @@ class Proxy
 
     /**
      * IM 请求代理
-     * @param YunXinImClient $client
+     * @param Auth $auth
      */
-    public function __construct(YunXinImClient $client)
+    public function __construct(Auth $auth)
     {
         $httpOptions = [
-            'http_header' => $client->getHttpHeaders()
+            'http_header' => $auth->getAuthHeaders()
         ];
         $this->http = Http::getInstance($httpOptions);
     }
@@ -61,14 +61,14 @@ class Proxy
             if (isset($response['body'])) {
                 if ($response['body']['code'] != 200) {
                     // 这里我们直接抛出异常
-                    throw new YunXinImException($response['body']['code'] . "|" .$response['body']['desc']);
+                    throw new ImException($response['body']['code'] . "|" . $response['body']['desc']);
                     // 实际项目中，我们这样写。注意，不要把这些报错，直接显示出来。只提示im接口请求报错。并且记录日志。
                     // self::logWarningStatic($response['body']['code'] . "|" .$response['body']['desc'] . "|" . $url);
                     // self::throwErrorStatic(Code::E_IM_ERROR);
                 }
                 return $response['body'];
             } else {
-                throw new YunXinImException('未获取内容');
+                throw new ImException('未获取内容');
             }
         } catch (\Exception $exception) {
             throw $exception;

@@ -1,9 +1,9 @@
 <?php
 namespace YunXinIm\IM;
 
-use YunXinIm\Proxy;
+use YunXinIm\BaseClient;
 
-class Team extends Proxy
+class Team extends BaseClient
 {
     /**
      * Notes: 创建群

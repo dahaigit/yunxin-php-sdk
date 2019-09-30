@@ -1,9 +1,9 @@
 <?php
 namespace YunXinIm\IM;
 
-use YunXinIm\Proxy;
+use YunXinIm\BaseClient;
 
-class History extends Proxy
+class History extends BaseClient
 {
     /**
      * Notes: 获取群云端历史消息
