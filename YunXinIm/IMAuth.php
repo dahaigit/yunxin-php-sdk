@@ -51,10 +51,10 @@ class IMAuth
         $this->nonce = md5(uniqid(microtime(true), true));
         $this->checkSum = sha1($this->appSecret . $this->nonce . $this->curTime);
         return [
-            'AppKey:'.$this->appKey,
-            'Nonce:'.$this->nonce,
-            'CurTime:'.$this->curTime,
-            'CheckSum:'.$this->checkSum,
+            'AppKey:' . $this->appKey,
+            'Nonce:' . $this->nonce,
+            'CurTime:' . $this->curTime,
+            'CheckSum:' . $this->checkSum,
             'Content-Type:application/x-www-form-urlencoded;charset=utf-8'
         ];
     }
