@@ -1,7 +1,7 @@
 <?php
 namespace YunXinIm;
 
-class Auth
+class IMAuth
 {
     /**
      * @var 平台的key

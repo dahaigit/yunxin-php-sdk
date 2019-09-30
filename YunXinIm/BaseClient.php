@@ -4,7 +4,7 @@ namespace YunXinIm;
 class BaseClient
 {
     /**
-     * @var Http Http对象
+     * @var 所有请求都要经过BaseClient进行转发。并且BasecClient可以拥有中间件。处理，Auth，日志，等等功能。
      */
     private $http;
 
@@ -15,9 +15,9 @@ class BaseClient
 
     /**
      * IM 请求代理
-     * @param Auth $auth
+     * @param IMAuth $auth
      */
-    public function __construct(Auth $auth)
+    public function __construct(IMAuth $auth)
     {
         $httpOptions = [
             'http_header' => $auth->getAuthHeaders()
@@ -61,14 +61,14 @@ class BaseClient
             if (isset($response['body'])) {
                 if ($response['body']['code'] != 200) {
                     // 这里我们直接抛出异常
-                    throw new ImException($response['body']['code'] . "|" . $response['body']['desc']);
+                    throw new IMException($response['body']['code'] . "|" . $response['body']['desc']);
                     // 实际项目中，我们这样写。注意，不要把这些报错，直接显示出来。只提示im接口请求报错。并且记录日志。
                     // self::logWarningStatic($response['body']['code'] . "|" .$response['body']['desc'] . "|" . $url);
                     // self::throwErrorStatic(Code::E_IM_ERROR);
                 }
                 return $response['body'];
             } else {
-                throw new ImException('未获取内容');
+                throw new IMException('未获取内容');
             }
         } catch (\Exception $exception) {
             throw $exception;

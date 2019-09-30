@@ -11,7 +11,7 @@ $appKey = $envs['APP_KEY'];
 $appSecret = $envs['APP_SECRET'];
 
 try {
-    $client = new \YunXinIm\Auth($appKey, $appSecret);
+    $client = new \YunXinIm\IMAuth($appKey, $appSecret);
     $imTeam = new \YunXinIm\IM\Team($client);
     $tids = ['2687849475'];
 //    // 获取某个群的信息和群人员。
