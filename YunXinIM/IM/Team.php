@@ -1,7 +1,7 @@
 <?php
 namespace YunXinIm\IM;
 
-use YunXinIm\BaseClient;
+use YunXinIM\BaseClient;
 
 class Team extends BaseClient
 {

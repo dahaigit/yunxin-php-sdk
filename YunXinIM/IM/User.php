@@ -1,7 +1,7 @@
 <?php
 namespace YunXinIm\IM;
 
-use YunXinIm\BaseClient;
+use YunXinIM\BaseClient;
 
 class User extends BaseClient
 {

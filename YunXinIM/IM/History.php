@@ -1,7 +1,7 @@
 <?php
-namespace YunXinIm\IM;
+namespace YunXinIM\IM;
 
-use YunXinIm\BaseClient;
+use YunXinIM\BaseClient;
 
 class History extends BaseClient
 {
