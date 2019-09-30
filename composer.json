@@ -18,5 +18,11 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "license": "MIT"
+    "license": "MIT",
+    "repositories": {
+        "ereport": {
+            "type": "git",
+            "url": "https://github.com/dahaigit/yunxin-php-sdk.git"
+        }
+    }
 }
